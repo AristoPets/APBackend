@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="aristo-pets:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ROOT.war">
+      <element id="artifact" artifact-name="aristo-pets:war exploded" />
+    </root>
+  </artifact>
+</component>
