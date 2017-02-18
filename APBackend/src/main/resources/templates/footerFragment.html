@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<footer class="section footer_when_sidebar" th:fragment="footer">
+    <div class="wrapper footer">
+        <div class="footer_item">
+            <p><span>Hillel</span> - IT school</p>
+            <p><span>Phone</span>: +38 (097) 156-58-27</p>
+            <p><span>Email</span>: odessa@itschool-hillel.org</p>
+        </div>
+        <div class="footer_item footer_itemLogo">
+            <img src="../static/img/logo_hillel.png" th:src="@{/img/logo_hillel.png}" alt="logo"/>
+            <p>Комьютерная <br/> школа</p>
+        </div>
+        <div class="footer_item">
+            <p><span>ArisoPets</span> - buy your pet!</p>
+            <p><span>Phone</span>: +38 (097) 000-00-00</p>
+            <p><span>Email</span>: aristopets@gmail.com</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

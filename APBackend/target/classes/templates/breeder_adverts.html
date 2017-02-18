@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Заводчик</title>
+    <link rel="shortcut icon" th:href="@{/img/favicon.ico}"  type="image/x-icon"/>
+    <link rel="icon" th:href="@{/img/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css}"/>
+    <link rel="stylesheet" href="../static/assets/font-awesome.min.css" th:href="@{/assets/font-awesome.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets/style.css" th:href="@{/assets/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets/page3.css" th:href="@{/assets/page3.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets/all_animals.css" th:href="@{/assets/all_animals.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets/breeder.css" th:href="@{/assets/breeder.css}"/>
+    <script src="../static/js/popUp.js" th:src="@{/js/popUp.js}"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" th:src="@{https://code.jquery.com/jquery-2.2.4.min.js}"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+<div th:replace="headerFragment :: header">
+</div>
+<div class="wrapper">
+    <!-- Main section -->
+    <section class="main">
+        <div th:replace="sideBarFragment :: sidebar">
+        </div>
+
+        <div class="content">
+            <h1 class="allAnimal_headline allAnimal_headline-mod">Dogs of <span
+                    th:text="${userBreeder.firstName}+' '+${userBreeder.lastName}">Dmitry Shatov</span></h1>
+            <div class="contentSidebar">
+                <a class="contentItem  contentItem-color" href="#" th:href="@{'/breeder/adverts/'+${userBreeder.id}}">
+                    <div>
+                        For Sale (<span
+                            th:text="${advertsCount}"> 3</span>)
+                    </div>
+                </a>
+                <a class="contentItem contentItem-mod" href="#" th:href="@{'/breeder/animals/'+${userBreeder.id}}">
+                    <div >Dogs
+                        (<span th:text="${animalsCount}">4</span>)
+                    </div>
+                </a>
+            </div>
+            <section class="dogsItem dogsitemWrap" th:each=" advert : ${adverts}">
+            <div class="animals_picWrap">
+                <img src="../static/img/dog2.jpg" th:src="${advert.photos[0]}" alt="dogs" class="animals-pic"/>
+            </div>
+            <div class="discripitonAnimal">
+                <h3 class="discripitonAnimal_name" th:text="${advert.title}">Beautiful Yorkshire Terrier for
+                    sale</h3>
+                <h2 class="discripitonAnimal_price" th:text="${advert.averagePrice}+'$'">700$</h2>
+                <h2 class="discripitonAnimal_place"><i class="fa fa-map-marker" aria-hidden="true"></i>Odessa,
+                    Ukraine</h2>
+                <h2 class="discripitonAnimal_breed">Breed: <span th:text="${advert.breed.name}">sobaka</span></h2>
+                <h2 class="discripitonAnimal_birthday">Data of Birthday: <span th:text="${advert.birthday}">12.10.2014</span>
+                </h2>
+                <div class="discripitonAnimal_buttons">
+                    <a href="#">
+                        <!--
+                        <button class="discripitonAnimal_more"><i class="fa fa-heart" aria-hidden="true"></i>
+                        </button>
+                        -->
+                    </a>
+
+                    <a href="#" th:href="@{'/advert/'+${advert.id}}">
+                        <button class="discripitonAnimal_more">More</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        </div>
+
+    </section>
+    <div th:replace="footerFragment :: footer"></div>
+</div>
+
+<script type="text/javascript" src="../static/js/script.js"></script>
+</body>
+</html>

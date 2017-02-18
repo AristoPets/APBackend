@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Главная</title>
+    <link rel="shortcut icon" th:href="@{/img/favicon.ico}"  type="image/x-icon"/>
+    <link rel="icon" th:href="@{/img/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css}"/>
+    <link rel="stylesheet" href="../static/assets/font-awesome.min.css" th:href="@{/assets/font-awesome.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets/style.css" th:href="@{/assets/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets/main.css" th:href="@{/assets/main.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets/page3.css" th:href="@{/assets/page3.css}"/>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" th:src="@{https://code.jquery.com/jquery-2.2.4.min.js}"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous">
+    </script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css"
+          th:href="@{http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css}" rel="stylesheet"/>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"
+            th:src="@{http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js}"></script>
+    <script src="../static/js/popUp.js" th:src="@{/js/popUp.js}"></script>
+    <script src="../static/js/search.js" th:src="@{/js/search.js}"></script>
+    <script src="../static/js/search.js" th:src="@{/js/jquery.easy-autocomplete.min.js}"></script>
+
+</head>
+<body>
+<div th:replace="headerFragment :: header">
+</div>
+
+<div class="containerSlider">
+    <div class="wrapForoverlow">
+        <div class="slider_headline">Мы <span>лучше</span> и <span>мягче</span>,<br/> чем ты, стартапер.</div>
+        <a th:href="@{/list/adverts}">
+            <button type="button" class="slider_button">Выбрать щенка</button>
+        </a>
+    </div>
+
+    <div class="fotorama " data-autoplay="false" data-transition="slide" data-loop="true" data-ratio="16/5.8" fit="scaledown">
+        <img src="../static/img/slide1.jpg"/>
+        <img src="../static/img/slide2.jpg"/>
+        <img src="../static/img/slide3.jpg"/>
+        <img src="../static/img/slide4.jpg"/>
+        <img src="../static/img/slide5.jpg"/>
+    </div>
+</div>
+
+<div th:replace="mainSearchFragment :: searchMenu"></div>
+
+<div class="mainPageWrap wrapper">
+    <div class="mainSidebar"></div>
+    <div class="wrapForItems">
+        <section class="dogsItem" th:each="i : ${#numbers.sequence(1,5)}">
+            <div class="animals_picWrap">
+                <img src="../static/img/dog1.jpg"
+                     th:src="${adverts.get(i).photos} != null ?
+                             (${adverts.get(i).photos.size()} !=0 ? ${adverts.get(i).photos.get(0)} : '/img/noAnimal.jpg')
+							 : '/img/noAnimal.jpg'"
+                     alt="dogs" class="animals-pic"/>
+            </div>
+            <div class="discripitonAnimal">
+                <h3 class="discripitonAnimal_name" th:text="${adverts.get(i).title}">Beautiful Yorkshire Terrier for sale</h3>
+                <h2 class="discripitonAnimal_price" th:text="${adverts.get(i).averagePrice} + '$'">700$</h2>
+                <h2 class="discripitonAnimal_place"><i class="fa fa-map-marker" aria-hidden="true"></i>Odessa, Ukraine
+                </h2>
+                <h2 class="discripitonAnimal_breed">Breed: <span th:text="${adverts.get(i).breed.name}">Dog</span></h2>
+                <h2 class="discripitonAnimal_birthday">Birthday: <span th:text="${adverts.get(i).birthday}">12.10.2014</span>
+                </h2>
+                <div class="discripitonAnimal_buttons">
+                    <!--
+                    <a href="#">
+                        <form action="#" method="post" th:action="@{/git} + ${advert.id}">
+                            <button class="discripitonAnimal_more"><i class="fa fa-heart" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </a>
+                    -->
+
+                    <a href="#" th:href="@{'/advert/'+${adverts.get(i).id}}">
+                        <button class="discripitonAnimal_more">More</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="dogsItem" th:each="i : ${#numbers.sequence(1,5)}">
+            <div class="animals_picWrap">
+                <img src="../static/img/dog1.jpg"
+                     th:src="${adverts.get(i).photos} != null ?
+                             (${adverts.get(i).photos.size()} !=0 ? ${adverts.get(i).photos.get(0)} : '/img/noAnimal.jpg')
+							 : '/img/noAnimal.jpg'"
+                     alt="dogs" class="animals-pic"/>
+            </div>
+            <div class="discripitonAnimal">
+                <h3 class="discripitonAnimal_name" th:text="${adverts.get(i).title}">Beautiful Yorkshire Terrier for sale</h3>
+                <h2 class="discripitonAnimal_price" th:text="${adverts.get(i).averagePrice} + '$'">700$</h2>
+                <h2 class="discripitonAnimal_place"><i class="fa fa-map-marker" aria-hidden="true"></i>Odessa, Ukraine
+                </h2>
+                <h2 class="discripitonAnimal_breed">Breed: <span th:text="${adverts.get(i).breed.name}">Dog</span></h2>
+                <h2 class="discripitonAnimal_birthday">Birthday: <span th:text="${adverts.get(i).birthday}">12.10.2014</span>
+                </h2>
+                <div class="discripitonAnimal_buttons">
+                    <!--
+                    <a href="#">
+                        <form action="#" method="post" th:action="@{/git} + ${advert.id}">
+                            <button class="discripitonAnimal_more"><i class="fa fa-heart" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </a>
+                    -->
+
+                    <a href="#" th:href="@{'/advert/'+${adverts.get(i).id}}">
+                        <button class="discripitonAnimal_more">More</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="dogsItem" th:each="i : ${#numbers.sequence(1,5)}">
+            <div class="animals_picWrap">
+                <img src="../static/img/dog1.jpg"
+                     th:src="${adverts.get(i).photos} != null ?
+                             (${adverts.get(i).photos.size()} !=0 ? ${adverts.get(i).photos.get(0)} : '/img/noAnimal.jpg')
+							 : '/img/noAnimal.jpg'"
+                     alt="dogs" class="animals-pic"/>
+            </div>
+            <div class="discripitonAnimal">
+                <h3 class="discripitonAnimal_name" th:text="${adverts.get(i).title}">Beautiful Yorkshire Terrier for sale</h3>
+                <h2 class="discripitonAnimal_price" th:text="${adverts.get(i).averagePrice} + '$'">700$</h2>
+                <h2 class="discripitonAnimal_place"><i class="fa fa-map-marker" aria-hidden="true"></i>Odessa, Ukraine
+                </h2>
+                <h2 class="discripitonAnimal_breed">Breed: <span th:text="${adverts.get(i).breed.name}">Dog</span></h2>
+                <h2 class="discripitonAnimal_birthday">Birthday: <span th:text="${adverts.get(i).birthday}">12.10.2014</span>
+                </h2>
+                <div class="discripitonAnimal_buttons">
+                    <!--
+                    <a href="#">
+                        <form action="#" method="post" th:action="@{/git} + ${advert.id}">
+                            <button class="discripitonAnimal_more"><i class="fa fa-heart" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </a>
+                    -->
+
+                    <a href="#" th:href="@{'/advert/'+${adverts.get(i).id}}">
+                        <button class="discripitonAnimal_more">More</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="dogsItem" th:each="i : ${#numbers.sequence(1,5)}">
+            <div class="animals_picWrap">
+                <img src="../static/img/dog1.jpg"
+                     th:src="${adverts.get(i).photos} != null ?
+                             (${adverts.get(i).photos.size()} !=0 ? ${adverts.get(i).photos.get(0)} : '/img/noAnimal.jpg')
+							 : '/img/noAnimal.jpg'"
+                     alt="dogs" class="animals-pic"/>
+            </div>
+            <div class="discripitonAnimal">
+                <h3 class="discripitonAnimal_name" th:text="${adverts.get(i).title}">Beautiful Yorkshire Terrier for sale</h3>
+                <h2 class="discripitonAnimal_price" th:text="${adverts.get(i).averagePrice} + '$'">700$</h2>
+                <h2 class="discripitonAnimal_place"><i class="fa fa-map-marker" aria-hidden="true"></i>Odessa, Ukraine
+                </h2>
+                <h2 class="discripitonAnimal_breed">Breed: <span th:text="${adverts.get(i).breed.name}">Dog</span></h2>
+                <h2 class="discripitonAnimal_birthday">Birthday: <span th:text="${adverts.get(i).birthday}">12.10.2014</span>
+                </h2>
+                <div class="discripitonAnimal_buttons">
+                    <!--
+                    <a href="#">
+                        <form action="#" method="post" th:action="@{/git} + ${advert.id}">
+                            <button class="discripitonAnimal_more"><i class="fa fa-heart" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </a>
+                    -->
+
+                    <a href="#" th:href="@{'/advert/'+${adverts.get(i).id}}">
+                        <button class="discripitonAnimal_more">More</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="dogsItem" th:each="i : ${#numbers.sequence(1,5)}">
+            <div class="animals_picWrap">
+                <img src="../static/img/dog1.jpg"
+                     th:src="${adverts.get(i).photos} != null ?
+                             (${adverts.get(i).photos.size()} !=0 ? ${adverts.get(i).photos.get(0)} : '/img/noAnimal.jpg')
+							 : '/img/noAnimal.jpg'"
+                     alt="dogs" class="animals-pic"/>
+            </div>
+            <div class="discripitonAnimal">
+                <h3 class="discripitonAnimal_name" th:text="${adverts.get(i).title}">Beautiful Yorkshire Terrier for sale</h3>
+                <h2 class="discripitonAnimal_price" th:text="${adverts.get(i).averagePrice} + '$'">700$</h2>
+                <h2 class="discripitonAnimal_place"><i class="fa fa-map-marker" aria-hidden="true"></i>Odessa, Ukraine
+                </h2>
+                <h2 class="discripitonAnimal_breed">Breed: <span th:text="${adverts.get(i).breed.name}">Dog</span></h2>
+                <h2 class="discripitonAnimal_birthday">Birthday: <span th:text="${adverts.get(i).birthday}">12.10.2014</span>
+                </h2>
+                <div class="discripitonAnimal_buttons">
+                    <!--
+                    <a href="#">
+                        <form action="#" method="post" th:action="@{/git} + ${advert.id}">
+                            <button class="discripitonAnimal_more"><i class="fa fa-heart" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </a>
+                    -->
+
+                    <a href="#" th:href="@{'/advert/'+${adverts.get(i).id}}">
+                        <button class="discripitonAnimal_more">More</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div th:replace="footerFragment :: footer">
+</div>
+<script type="text/javascript" src="../static/js/mainPage.js"></script>
+</body>
+</html>

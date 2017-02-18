@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script>document.write('<base href=" ' + document.location + '"/>')</script>
+    <title>Профиль</title>
+    <link rel="shortcut icon" th:href="@{/img/favicon.ico}"  type="image/x-icon"/>
+    <link rel="icon" th:href="@{/img/favicon.ico}" type="image/x-icon"/>
+    <link href="./assets/font-awesome.min.css" th:src="@{/assets/font-awesome.min.css}" rel="stylesheet"/>
+    <link href="./assets/simple-line-icons.css" th:src="@{/assets/simple-line-icons.css}" rel="stylesheet"/>
+    <link href="./assets/bootstrap.min.css" th:href="@{/assets/bootstrap.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="./assets/style.css" th:href="@{/assets/header.css}"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <script src="./assets/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+    <script src="../static/js/popUp.js" th:src="@{/js/popUp.js}"></script>
+    <script src="./assets/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="./assets/js/fotorama.js" th:src="@{/js/fotorama.js}"></script>
+    <script src="./assets/js/jquery.slimscroll.min.js" th:src="@{/js/jquery.slimscroll.min.js}"></script>
+</head>
+<body>
+<div th:replace="headerFragment :: header"></div>
+<my-app>Loading...</my-app>
+<footer></footer>
+<script type="text/javascript" src="../static/userprofile/polyfills.js" th:src="@{/userprofile/polyfills.js}"></script>
+<script type="text/javascript" src="../static/userprofile/vendor.js" th:src="@{/userprofile/vendor.js}"></script>
+<script type="text/javascript" src="../static/userprofile/app.js" th:src="@{/userprofile/app.js}"></script>
+</body>
+</html>

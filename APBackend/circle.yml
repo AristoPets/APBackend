@@ -1,0 +1,13 @@
+general:
+  artifacts:
+    - "target"
+    
+deployment:
+    master:
+        branch: master
+        commands:
+        - sh ./deploy_master.sh
+    test:
+        branch: /.*/
+        commands:
+        - sh ./deploy_test.sh

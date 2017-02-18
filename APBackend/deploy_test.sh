@@ -1,0 +1,1 @@
+curl  -u ${tomcat_username}:${tomcat_password} -T ${artifact_path} 'http://'${tomcat_host}':'${tomcat_port}'/manager/text/deploy?path='${tomcat_test_path}'&update=true'
